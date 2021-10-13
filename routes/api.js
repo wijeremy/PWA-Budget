@@ -23,15 +23,16 @@ router.post('/api/transaction/bulk', ({ body }, res) => {
 });
 
 router.get('/api/transaction', (req, res) => {
-  // Transaction.find({}).sort({date: -1})
-  //   .then(dbTransaction => {
-  //     res.json(dbTransaction);
-  //   })
-  //   .catch(err => {
-  //     res.status(404).json(err);
-  //   });
   console.log('good day sir\n from /api/transaction\n');
-  res.json([{ name: 'transaction', value: 1000 }]);
+  Transaction.find({})
+    .sort({ date: -1 })
+    .then((dbTransaction) => {
+      res.json(dbTransaction);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+  // res.json([{ name: 'transaction', value: 1000 }]);
 });
 
 module.exports = router;
