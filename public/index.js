@@ -8,7 +8,7 @@ fetch('/api/transaction')
   .then((data) => {
     // save db data on global variable
     transactions = data;
-    console.log(transactions);
+    console.log('fetch api\n', transactions);
     populateTotal();
     populateTable();
     populateChart();
@@ -26,6 +26,7 @@ function populateTotal() {
 }
 
 function populateTable() {
+  console.log('populating table');
   let tbody = document.querySelector('#tbody');
   tbody.innerHTML = '';
 
@@ -43,6 +44,7 @@ function populateTable() {
 
 function populateChart() {
   // copy array and reverse it
+  console.log('populating chart');
   let reversed = transactions.slice().reverse();
   let sum = 0;
 
@@ -82,6 +84,7 @@ function populateChart() {
 }
 
 function sendTransaction(isAdding) {
+  console.log('ahoy matey!');
   let nameEl = document.querySelector('#t-name');
   let amountEl = document.querySelector('#t-amount');
   let errorEl = document.querySelector('.form .error');
